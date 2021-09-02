@@ -5,7 +5,7 @@ public class Car {
     private double balance;
     private final double consumption;
 
-    public Car(int volume,int balance,int consumption){
+    public Car(int volume,int balance,double consumption){
         this.volume = volume;
         this.balance = balance;
         this.consumption = consumption;
