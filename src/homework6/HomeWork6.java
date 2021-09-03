@@ -1,7 +1,5 @@
 package homework6;
 
-//import homework6.Animal;
-
 public class HomeWork6 {
     public static void main(String[] args) {
         HomeAnimal dog = new HomeAnimal(1, AnimalType.Dog, 5, 20, ColorType.Black, "Rex", true, true);
