@@ -64,14 +64,10 @@ public class homework4 {
 
     public static void task5(){
         System.out.println("Enter number x");
-        int x=scanner.nextInt();
+        double x=scanner.nextDouble();
         System.out.println("Enter number n");
-        int n=scanner.nextInt();
-        int result=1;
-        for (int i=0;i<n;i++){
-            result*=x;
-        }
-        System.out.println("Result: " + result);
+        double n=scanner.nextDouble();
+        System.out.println("Result: " + Math.pow(x,n));
     }
 
     public static void task6(){
