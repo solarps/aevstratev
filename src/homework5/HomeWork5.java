@@ -1,6 +1,6 @@
-package homework6;
+package homework5;
 
-public class HomeWork6 {
+public class HomeWork5 {
     public static void main(String[] args) {
         HomeAnimal dog = new HomeAnimal(1, AnimalType.Dog, 5, 20, ColorType.Black, "Rex", true, true);
         System.out.println();

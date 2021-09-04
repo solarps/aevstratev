@@ -1,4 +1,4 @@
-package homework6;
+package homework5;
 
 public enum AnimalType {
     Dog,
