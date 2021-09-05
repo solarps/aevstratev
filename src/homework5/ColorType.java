@@ -5,6 +5,7 @@ public enum ColorType {
     Gray,
     Black,
     Orange,
-    White
+    White,
+    Green
 }
 
