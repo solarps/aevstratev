@@ -62,15 +62,9 @@ public class StringCollectionImp implements StringCollection {
                 for (int i = 0; i < newArr.length; i++) {
                     newArr[i] = tempArr[i];
                     if (Objects.equals(tempArr[i], str)) {
-                        if (i == tempArr.length - 1) {
-                            for (int k = 0; k < newArr.length; k++) {
-                                newArr[k] = tempArr[k];
-                            }
-                        } else {
-                            for (int j = i; j < newArr.length; j++) {
+                        for (int j = i; j < newArr.length; j++) {
                                 newArr[j] = tempArr[j + 1];
                             }
-                        }
                     }
                 }
             } else {
