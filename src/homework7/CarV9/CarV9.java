@@ -14,8 +14,9 @@ public class CarV9 {
 
     public CarV9(String location) {
         this.location = location;
-        this.volume = BigDecimal.valueOf(Math.random() * 20 + 30).setScale(2, RoundingMode.CEILING);
-        this.balance = volume.subtract(BigDecimal.valueOf(Math.random() * 20 + 10).setScale(2, RoundingMode.CEILING));
+        this.volume = BigDecimal.valueOf(Math.random() * 30 + 30).setScale(2, RoundingMode.CEILING);
+        this.balance = volume.divide(BigDecimal.valueOf(100), RoundingMode.CEILING)
+                .multiply(BigDecimal.valueOf(Math.random() * 40 + 10).setScale(2, RoundingMode.CEILING));
         this.consumption = BigDecimal.valueOf(Math.random() * 10 + 5).setScale(2, RoundingMode.CEILING);
         this.totalSentMoney = new BigDecimal(0).setScale(2, RoundingMode.CEILING);
     }
@@ -63,9 +64,9 @@ public class CarV9 {
 
     public void printTripReport() {
         System.out.println("Место прибытия: " + this.location);
-        System.out.println("Остаток в баке: " + getFuelInTank()+ "L");
+        System.out.println("Остаток в баке: " + getFuelInTank() + "L");
         System.out.println("Всего потрачено: " + this.totalSentMoney.setScale(2, RoundingMode.CEILING) + " UAH");
-        System.out.println("Всего проехано: " + this.tripDistance.setScale(2,RoundingMode.CEILING) + " km");
+        System.out.println("Всего проехано: " + this.tripDistance.setScale(2, RoundingMode.CEILING) + " km");
     }
 
     @Override
