@@ -1,5 +1,7 @@
 package homework8;
 
+import java.util.Objects;
+
 public class StringCollectionImp implements StringCollection {
     private String[] arr = new String[0];
 
@@ -44,7 +46,7 @@ public class StringCollectionImp implements StringCollection {
     public boolean delete(String str) {
         boolean isExist = false;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals(str)) {
+            if (Objects.equals(arr[i], str)) {
                 isExist = true;
                 break;
             }
@@ -56,10 +58,10 @@ public class StringCollectionImp implements StringCollection {
                 clear();
                 return true;
             }
-            if (!tempArr[tempArr.length - 1].equals(str)) {
+            if (!Objects.equals(tempArr[tempArr.length - 1],str)) {
                 for (int i = 0; i < newArr.length; i++) {
                     newArr[i] = tempArr[i];
-                    if (tempArr[i].equals(str)) {
+                    if (Objects.equals(tempArr[i], str)) {
                         if (i == tempArr.length - 1) {
                             for (int k = 0; k < newArr.length; k++) {
                                 newArr[k] = tempArr[k];
@@ -84,7 +86,7 @@ public class StringCollectionImp implements StringCollection {
     @Override
     public boolean contains(String str) {
         for (String string : arr) {
-            if (string.equals(str)) return true;
+            if (Objects.equals(string, str)) return true;
         }
         return false;
     }
@@ -93,7 +95,7 @@ public class StringCollectionImp implements StringCollection {
     public boolean equals(StringCollection collection) {
         if (collection.size() == size()) {
             for (int i = 0; i < arr.length; i++) {
-                if (!arr[i].equals(collection.get(i))) return false;
+                if (!Objects.equals(arr[i], collection.get(i))) return false;
             }
             return true;
         } else return false;
