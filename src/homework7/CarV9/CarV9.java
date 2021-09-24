@@ -25,11 +25,6 @@ public class CarV9 {
         this.tripDistance = new BigDecimal(tripDistance).setScale(2, RoundingMode.CEILING);
     }
 
-    public void fillFullTank(double fuelPrice) {
-        this.balance = volume;
-        totalSentMoney = totalSentMoney.add(volume.multiply(BigDecimal.valueOf(fuelPrice)));
-    }
-
     public BigDecimal getFuelInTank() {
         return balance.setScale(2, RoundingMode.CEILING);
     }
@@ -58,10 +53,16 @@ public class CarV9 {
             fillFullTank(fuelPrice);
         } else {
             this.balance = balance.add(BigDecimal.valueOf(liters));
-            this.totalSentMoney = totalSentMoney.add(BigDecimal.valueOf(fuelPrice));
+            //this.totalSentMoney = totalSentMoney.add(BigDecimal.valueOf(fuelPrice));
+            this.totalSentMoney = totalSentMoney.add(BigDecimal.valueOf(fuelPrice * liters));
         }
     }
 
+    public void fillFullTank(double fuelPrice) {
+        fillTank(volume.subtract(balance).doubleValue(), fuelPrice);
+        this.balance = volume;
+        //totalSentMoney = totalSentMoney.add(volume.multiply(BigDecimal.valueOf(fuelPrice)));
+    }
     public void printTripReport() {
         System.out.println("Место прибытия: " + this.location);
         System.out.println("Остаток в баке: " + getFuelInTank() + "L");
