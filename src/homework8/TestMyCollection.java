@@ -7,7 +7,7 @@ public class TestMyCollection extends StringCollectionImp{
     }
     public static void checkOperations(){
         // Check create collection
-        StringCollectionImp c = new StringCollectionImp();
+        StringCollection c = new StringCollectionImp();
         assert (c.size() == 0);
 
         // Check add elements

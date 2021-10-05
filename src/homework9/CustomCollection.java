@@ -1,6 +1,6 @@
 package homework9;
 
-import java.util.Collection;
+import homework8.StringCollection;
 
 public interface CustomCollection {
     boolean add(String str);
@@ -12,5 +12,5 @@ public interface CustomCollection {
     boolean contains(String str);
     boolean clear();
     int size();
-    boolean equals(Collection coll);
+    boolean equals(StringCollection coll);
 }

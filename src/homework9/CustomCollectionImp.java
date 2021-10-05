@@ -1,6 +1,7 @@
 package homework9;
 
-import java.util.Collection;
+import homework8.StringCollection;
+
 
 public class CustomCollectionImp implements CustomCollection {
     static public class Node {
@@ -78,7 +79,18 @@ public class CustomCollectionImp implements CustomCollection {
         Node current = first;
         for (int i = 0; i < size; i++) {
             if (current.str.equals(str)) {
-                if (i == 0) first = first.next;
+                if (i == 0) {
+                    first = first.next;
+                    first.prev = null;
+                    size--;
+                    return true;
+                }
+                if (i == size - 1) {
+                    last = last.prev;
+                    last.next = null;
+                    size--;
+                    return true;
+                }
                 Node prev = getNodeByIndex(i - 1);
                 prev.next = getNodeByIndex(i + 1);
                 size--;
@@ -118,7 +130,14 @@ public class CustomCollectionImp implements CustomCollection {
     }
 
     @Override
-    public boolean equals(Collection coll) {
-        return false;
+    public boolean equals(StringCollection coll) {
+        if (size != coll.size())
+            return false;
+        for (int i = 0; i < size; i++) {
+            if (getNodeByIndex(i).str.equals(coll.get(i))) continue;
+            return false;
+        }
+        return true;
+
     }
 }
