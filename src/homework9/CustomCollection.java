@@ -12,5 +12,5 @@ public interface CustomCollection {
     boolean contains(String str);
     boolean clear();
     int size();
-    boolean equals(StringCollection coll);
+    boolean equals(CustomCollection coll);
 }

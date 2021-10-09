@@ -34,7 +34,7 @@ public class CustomCollectionImp implements CustomCollection {
 
         } else {
             Node prev = last;
-            last.next = newNode;
+            prev.next = newNode;
             last = newNode;
             last.prev = prev;
         }
@@ -54,16 +54,23 @@ public class CustomCollectionImp implements CustomCollection {
     public boolean addAll(CustomCollection strColl) {
         final int sizeCollection = strColl.size();
         for (int i = 0; i < sizeCollection; i++) {
-            add(get(i));
+            add(strColl.get(i));
         }
-        return false;
+        return true;
     }
 
     @Override
     public boolean delete(int index) {
         if (index < size) {
-            if (index == 0) first = first.next;
-            else {
+            if (index == 0) {
+                first = first.next;
+                first.prev = null;
+            } else if (index == size - 1) {
+                last = last.prev;
+                last.next = null;
+                size--;
+                return true;
+            } else {
                 Node prev = getNodeByIndex(index - 1);
                 Node next = getNodeByIndex(index + 1);
                 prev.next = next;
@@ -79,21 +86,7 @@ public class CustomCollectionImp implements CustomCollection {
         Node current = first;
         for (int i = 0; i < size; i++) {
             if (current.str.equals(str)) {
-                if (i == 0) {
-                    first = first.next;
-                    first.prev = null;
-                    size--;
-                    return true;
-                }
-                if (i == size - 1) {
-                    last = last.prev;
-                    last.next = null;
-                    size--;
-                    return true;
-                }
-                Node prev = getNodeByIndex(i - 1);
-                prev.next = getNodeByIndex(i + 1);
-                size--;
+                delete(i);
                 return true;
             } else current = current.next;
         }
@@ -130,14 +123,13 @@ public class CustomCollectionImp implements CustomCollection {
     }
 
     @Override
-    public boolean equals(StringCollection coll) {
+    public boolean equals(CustomCollection coll) {
         if (size != coll.size())
             return false;
         for (int i = 0; i < size; i++) {
-            if (getNodeByIndex(i).str.equals(coll.get(i))) continue;
+            if (get(i).equals(coll.get(i))) continue;
             return false;
         }
         return true;
-
     }
 }
